@@ -7,6 +7,8 @@
 import requests
 from bs4 import BeautifulSoup
 from time import sleep
+from urllib.request import quote
+
 
 url = "https://www.clayguo.tech"
 
@@ -20,6 +22,6 @@ for title in list1:
     sleep(1)
     print("网页正在爬取中....")
     print("文章标题为：" + title.string, end=" ")
-    print("目标地址为：" + url + '/' + title['href'])
+    print("目标地址为：" + url + '/' + quote(title['href']))
 
 

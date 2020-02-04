@@ -8,11 +8,12 @@ from bs4 import BeautifulSoup
 from time import sleep
 import pprint
 
-page_index = list(range(1))
+page_index = list(range(0,25,25))
 
 header = {
     'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                   "Chrome/75.0.3770.142 Safari/537.36 "
+,'Connection': 'close'
 }
 
 
@@ -27,17 +28,18 @@ def download_all_htmls():
         r = requests.get(url, headers=header)
         if r.status_code != 200:
             raise Exception("Http错误代码，非200")
-        htmls.append(url)
+        htmls.append(r.text)
+        # print(r.text)
         sleep(1)
     return htmls
 
 
 htmls = download_all_htmls()
 
-print(htmls[0].text)
+
 
 def parse_single_html(html):
-    soup = BeautifulSoup(html.content, 'html.parser')
+    soup = BeautifulSoup(html, 'html.parser')
     article_items = (
         soup.find("div", class_="article")
             .find("ol", class_="grid_view")
@@ -49,7 +51,7 @@ def parse_single_html(html):
         info = article_item.find("div", class_="info")
         title = info.find("div", class_="hd").find("span", class_="title").get_text()
         stars = (info.find("div", class_="bd").find("div", class_="star").find_all("span"))
-        rating_star = stars[0]["class"]
+        rating_star = stars[0]["class"][0]
         rating_num = stars[1].get_text()
         comment_num = stars[3].get_text()
         datas.append({
@@ -63,4 +65,4 @@ def parse_single_html(html):
     return datas
 
 
-# pprint.pprint(parse_single_html(htmls[0]))
+pprint.pprint(parse_single_html(htmls[0]))

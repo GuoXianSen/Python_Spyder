@@ -1,7 +1,7 @@
 # Python_Spyder
 > 记录Python爬虫学习过程
 
-## 所需要的库
+## 与爬虫相关的库
 
 ### requests
 

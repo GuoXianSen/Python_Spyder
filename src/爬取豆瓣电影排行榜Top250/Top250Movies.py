@@ -69,12 +69,11 @@ def parse_single_html(html):
 all_datas = []
 for html in htmls:
     all_datas.extend(parse_single_html(html))
-print(type(all_datas))
-print(all_datas[0])
+
 # pprint.pprint(all_datas)
 # print(len(all_datas))
-# import pandas as pd
-#
-# df = pd.DataFrame(all_datas)
-# print(df)
-# df.to_excel("豆瓣电影排行榜Top250.xlsx")
+import pandas as pd
+
+df = pd.DataFrame(all_datas)
+print(df)
+df.to_excel("豆瓣电影排行榜Top250.xlsx")

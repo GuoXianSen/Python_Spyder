@@ -1,5 +1,9 @@
-# Python_Spyder
-> 记录Python爬虫学习过程
+# Python爬虫学习笔记
+> 记录Python爬虫学习笔记
+
+# 基础
+
+
 
 ## 与爬虫相关的库
 
@@ -14,7 +18,7 @@
 ```python
 import requests
 
-url = "https://www.clayguo.tech"
+url = "https://guoxiansen.github.io"
 html = requests.get(url)
 
 ```
@@ -37,6 +41,19 @@ html = requests.get(url)
 from bs4 import BeautifulSoup
 soup = BeautifulSoup(html_doc, 'html.parser')
 ```
+
+
+
+# 实战项目
+
++ 爬取b站实时弹幕进行分析并制作图床
+
++ 爬取教务系统
++ 爬取学校毕业设计信息
+
+# Reference
+
+
 
 
 
